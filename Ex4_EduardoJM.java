@@ -4,54 +4,53 @@ import java.util.Scanner;
 
 /**
  *
- * @author user
+ * @author 60003233
  */
 
 public class Ex4_EduardoJM {
     
     public static void main (String []args){
-    
-        int qtdPessoas;
-        String tamanhoPizza;
+        
+        double altura, peso, imcHomem, imcMulher;
+        String sexo;
         
         Scanner s = new Scanner (System.in);
         
-        System.out.println("Digite a quantidade de pessoas:");
-        qtdPessoas = s.nextInt();
+        System.out.println("Digite uma altura:");
+        altura = s.nextDouble();
         
-        System.out.println("Digite o tamanho da pizza(s):");
-        System.out.println("broto - pequena - media - grande");
-        tamanhoPizza = s.next();
+        System.out.println("Digite um peso:");
+        peso = s.nextDouble();
         
-        switch (tamanhoPizza){
-            case "broto":
-                System.out.println("A quantidade de pizzas necessária é: " + qtdPessoas);
-                break;
-            case "pequena":
-                System.out.println("A quantidade de pizzas necessária é: " + (qtdPessoas/2));
-                    if (qtdPessoas % 2 == 1){
-                        System.out.println("+ 1 broto");
-                    }
-                break;
-            case "media":
-                System.out.println("A quantidade de pizzas necessária é: " + (qtdPessoas/3));
-                    if (qtdPessoas % 3 == 1){
-                        System.out.println("+ 1 broto");
-                    } else if (qtdPessoas % 3 == 2){
-                        System.out.println("+ 1 pequena");
-                    }
-                break;
-            case "grande":
-                System.out.println("A quantidade de pizzas necessária é: " + (qtdPessoas/4));
-                    if (qtdPessoas % 4 == 1){
-                        System.out.println("+ 1 broto");
-                    } else if ( qtdPessoas % 4 == 2){
-                        System.out.println(" + 1 pequena");
-                    } else if (qtdPessoas % 4 == 3){
-                        System.out.println(" + 1 media");
-                    }
-                break;
-                
+        System.out.println("Digite o sexo (masculino/feminino):");
+        sexo = s.next();
+        
+        imcHomem = (((72.7) * (altura)) - 58);
+        imcMulher = (((62.1) * (altura)) - 44.7);
+        
+        if ("masculino".equals(sexo)){
+            System.out.println("\nO seu peso ideal é: " + imcHomem);
+        }
+        
+        if ("feminino".equals(sexo)){
+            System.out.println("\nO seu peso ideal é: " + imcMulher);
+        }
+        
+        
+        if (("masculino".equals(sexo)) && (imcHomem == peso)){
+            System.out.println("Você está no seu peso ideal.");
+        } else if (("masculino".equals(sexo)) && (imcHomem < peso)){
+            System.out.println("Você está acima do seu peso ideal.");
+        } else if (("masculino".equals(sexo)) && (imcHomem > peso)){
+            System.out.println("Você está abaixo do seu peso ideal.");
+        }
+        
+        if (("feminino".equals(sexo)) && (imcMulher == peso)){
+            System.out.println("Você está no seu peso ideal.");
+        } else if (("feminino".equals(sexo)) && (imcMulher < peso)){
+            System.out.println("Você está acima do seu peso ideal.");
+        } else if (("feminino".equals(sexo)) && (imcMulher > peso)){
+            System.out.println("Você está abaixo do seu peso ideal.");
         }
         
     }

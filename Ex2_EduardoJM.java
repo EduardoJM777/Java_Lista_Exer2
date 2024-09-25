@@ -4,55 +4,44 @@ import java.util.Scanner;
 
 /**
  *
- * @author 60003233
+ * @author user
  */
 
 public class Ex2_EduardoJM {
     
     public static void main (String []args){
-        
-        double altura, peso, imcHomem, imcMulher;
-        String sexo;
+    
+        int idFuncionario;
+        double hrTrabalhada, rsPorHr, salario, hrExtra, rsExtra;
+        String mes;
         
         Scanner s = new Scanner (System.in);
         
-        System.out.println("Digite uma altura:");
-        altura = s.nextDouble();
+        System.out.println("Digite o número da matrícula do funcionario:");
+        idFuncionario = s.nextInt();
         
-        System.out.println("Digite um peso:");
-        peso = s.nextDouble();
+        System.out.println("Digite o número de horas trabalhadas:");
+        hrTrabalhada = s.nextDouble();
         
-        System.out.println("Digite o sexo (masculino/feminino):");
-        sexo = s.next();
+        System.out.println("Digite o valor recebido por hora trabalhada:");
+        rsPorHr = s.nextDouble();
         
-        imcHomem = (((72.7) * (altura)) - 58);
-        imcMulher = (((62.1) * (altura)) - 44.7);
+        System.out.println("Digite o mês das informações(Ex: Maio/24):");
+        mes = s.next();
         
-        if ("masculino".equals(sexo)){
-            System.out.println("\nO seu peso ideal é: " + imcHomem);
+        salario = hrTrabalhada*rsPorHr;
+        
+        if (hrTrabalhada>200){
+            hrExtra = hrTrabalhada-200;
+            rsExtra= hrExtra*rsPorHr*1.50;
+            salario=salario+rsExtra;
         }
         
-        if ("feminino".equals(sexo)){
-            System.out.println("\nO seu peso ideal é: " + imcMulher);
-        }
-        
-        
-        if (("masculino".equals(sexo)) && (imcHomem == peso)){
-            System.out.println("Você está no seu peso ideal.");
-        } else if (("masculino".equals(sexo)) && (imcHomem < peso)){
-            System.out.println("Você está acima do seu peso ideal.");
-        } else if (("masculino".equals(sexo)) && (imcHomem > peso)){
-            System.out.println("Você está abaixo do seu peso ideal.");
-        }
-        
-        if (("feminino".equals(sexo)) && (imcMulher == peso)){
-            System.out.println("Você está no seu peso ideal.");
-        } else if (("feminino".equals(sexo)) && (imcMulher < peso)){
-            System.out.println("Você está acima do seu peso ideal.");
-        } else if (("feminino".equals(sexo)) && (imcMulher > peso)){
-            System.out.println("Você está abaixo do seu peso ideal.");
-        }
-        
+        System.out.println("\nMatrícula do Funcionário: " + idFuncionario);
+        System.out.println("Horas Trabalhadas: " + hrTrabalhada);
+        System.out.println("Mês das Informações: " + mes);
+        System.out.println("Salário Total: R$" + salario);
+    
     }
     
 }
